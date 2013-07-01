@@ -19,20 +19,20 @@ END_HOUR = 9
 END_MINUTE = 10
 NAME = 'Your name'
 STU_ID = '12345678'
-START_MOVIN = '07/15/13'
-END_MOVIN = '08/15/13'
+START_MOVIN = '07/31/13'
+END_MOVIN = '08/16/13'
 
 counter = 0
 
 def Emailing(House):
 	global counter
-	if len(House) != 0:
+	if len(House) == 0:
 		#input the smtp, user, psw, address here
-		smtpserver = 'smtp.ufl.edu'
-		username = 'username'
-		password = 'password'
-		from_addr = 'username@ufl.edu'
-		to_addr = ['villages@housing.ufl.edu']
+		smtpserver = 'smtp.gmail.com'
+		username = 'ligyxy@gmail.com'
+		password = '?!24242424242424242424242424242'
+		from_addr = 'ligyxy@gmail.com'
+		to_addr = ['bot@guangyangli.com']
 		#cc_addr = 'panjf1990@gmail.com'
 		message = Message()
 		message['Subject'] = 'GFH Apartments' 
@@ -89,10 +89,14 @@ def web():
 				moveindate = atime.mktime(atime.strptime(movein,'%m/%d/%y'))
 				startdate = atime.mktime(atime.strptime(START_MOVIN,'%m/%d/%y'))
 				enddate = atime.mktime(atime.strptime(END_MOVIN,'%m/%d/%y'))
-				if (moveindate >= startdate and moveindate <= enddate) and (village == 'Diamond' or village == 'UVS' or village == 'Maguire') and (bedrooms == 'Two') and (level == 'Upstairs'):
-					id.append(listing)
+				if (moveindate >= startdate and moveindate <= enddate) and (village == 'Diamond' or village == 'UVS' or village == 'Maguire') and (bedrooms == 'One' or bedrooms == 'Two') and (level == 'Upstairs'):
+					id.append((listing,moveindate))
 					i = i + 1
-	return id
+	id.sort(key=lambda d:d[1])
+	result = []
+	for i in range(len(id)) :
+		result.append(id[i][0])
+	return result
 
 def run_housing():
 	Emailing(web())
