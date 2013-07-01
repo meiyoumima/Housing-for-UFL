@@ -29,10 +29,10 @@ def Emailing(House):
 	if len(House) == 0:
 		#input the smtp, user, psw, address here
 		smtpserver = 'smtp.gmail.com'
-		username = 'ligyxy@gmail.com'
-		password = '?!24242424242424242424242424242'
+		username = 'test@gmail.com'
+		password = 'YourPassword'
 		from_addr = 'ligyxy@gmail.com'
-		to_addr = ['bot@guangyangli.com']
+		to_addr = ['bot@gmail.com']
 		#cc_addr = 'panjf1990@gmail.com'
 		message = Message()
 		message['Subject'] = 'GFH Apartments' 
