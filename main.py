@@ -26,7 +26,7 @@ counter = 0
 
 def Emailing(House):
 	global counter
-	if len(House) == 0:
+	if len(House) != 0:
 		#input the smtp, user, psw, address here
 		smtpserver = 'smtp.gmail.com'
 		username = 'test@gmail.com'
